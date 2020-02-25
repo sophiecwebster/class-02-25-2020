@@ -1,0 +1,28 @@
+---
+title: "Craps"
+author: "Sophie Webster"
+date: "2/25/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+```{r}
+roll_one_die <- function(x) {
+  sample(1:6, 1)
+}
+
+roll_two_die <- function(x) {
+  roll_one_die() + roll_one_die()
+}
+
+# thing you're iterating over and function (indicated by tilde)
+roll_ten_dice <- function(x){map_int(1:10, ~ roll_two_die)}
+
+ten <- map_int(1:10, roll_two_die)
+
+plot(map_int(1:1000, ~ roll_two_die))
+```
